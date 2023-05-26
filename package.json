@@ -11,6 +11,7 @@
     "app"
   ],
   "scripts": {
+    "build": "npm run build --workspace=app",
     "dev:app": "npm run dev --workspace=app",
     "dev:api": "npm run dev --workspace=api"
   },
