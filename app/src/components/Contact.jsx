@@ -40,7 +40,7 @@ const Contact = () => {
 
     try {
       const HOST = import.meta.env.VITE_BACKEND_URL
-      const res = await fetch(`${HOST}/apis/email`, {
+      const res = await fetch(`${HOST}/api/email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, message })
