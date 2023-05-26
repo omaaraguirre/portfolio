@@ -1,0 +1,41 @@
+{
+  "name": "omaaraguirre",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "convert-webp": "find ./src/img -type f -name '*.png' -exec bash -c 'mkdir -p ./public/img/\"$(dirname \"{}\" | sed s,^./src/img/,,)\"; cwebp -q 80 \"{}\" -resize 500 300 -o \"./public/img/$(dirname \"{}\" | sed s,^./src/img/,,)/$(basename \"{}\" .png).webp\"' \\;",
+    "build": "npm run convert-webp && vite build && node gha.js"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/montserrat": "^4.5.14",
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/lab": "5.0.0-alpha.131",
+    "@mui/material": "^5.13.1",
+    "aos": "3.0.0-beta.6",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^4.8.0",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react-swc": "^3.0.0",
+    "autoprefixer": "^10.4.14",
+    "cwebp": "^2.0.5",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2",
+    "vite": "^4.3.2"
+  }
+}

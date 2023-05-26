@@ -1,0 +1,26 @@
+{
+  "name": "omaaraguirre",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "api",
+    "app"
+  ],
+  "scripts": {
+    "dev:app": "npm run dev --workspace=app",
+    "dev:api": "npm run dev --workspace=api"
+  },
+  "devDependencies": {
+    "standard": "^17.0.0"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/standard/eslintrc.json"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^9.0.0"
+  }
+}
