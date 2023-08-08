@@ -70,7 +70,7 @@ const Techs = () => {
     <section className='montserrat flex flex-col py-14 bg-zinc-900'>
       <div className='relative w-11/12 max-w-5xl mx-auto'>
         <div className='flex items-center absolute top-24 min-[500px]:top-16 right-5 transition-all duration-500'>
-          <span className='roboto text-white/70 mr-2'>Show All</span>
+          <span className='ubuntu text-white/70 mr-2'>Show All</span>
           <Switch color='error' onChange={(e) => setShowAll(e.target.checked)} />
         </div>
         <h2 className='flex flex-col text-3xl md:text-4xl text-center font-bold  text-zinc-200 mb-20 transition-all duration-500'>

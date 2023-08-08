@@ -39,14 +39,18 @@ const Contact = () => {
     if (Object.keys(newErrors).length > 0) return
 
     try {
-      const HOST = import.meta.env.VITE_BACKEND_URL
+      const { MODE, VITE_BACKEND_URL_DEV, VITE_BACKEND_URL_PROD } = import.meta.env
+      const HOST = MODE === 'development' ? VITE_BACKEND_URL_DEV : VITE_BACKEND_URL_PROD
+
       const res = await fetch(`${HOST}/api/email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, message })
       })
-      if(!res.ok) throw new Error(`(${res.status}) Something went wrong`)
-      const data = await res.json() 
+      if (!res.ok) {
+        throw new Error(`(${res.status}) Something went wrong`)
+      }
+      const data = await res.json()
 
       if (!data.ok) {
         throw new Error(data.msg)
@@ -63,7 +67,7 @@ const Contact = () => {
       setEmail('')
       setMessage('')
     } catch (error) {
-      toast.error(error.message,{
+      toast.error(error.message, {
         style: {
           background: 'rgba(127, 29, 29, 1)',
           color: '#fff'

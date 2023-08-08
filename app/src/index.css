@@ -9,8 +9,18 @@ body {
   background-size: 26px 26px;
 }
 
-.roboto {
-  font-family: 'Roboto', sans-serif;
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('fonts/Ubuntu-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('fonts/Montserrat-Regular.ttf');
+}
+
+.ubuntu {
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .montserrat {

@@ -16,12 +16,12 @@
     "dev:api": "npm run dev --workspace=api"
   },
   "devDependencies": {
-    "standard": "^17.0.0"
+    "standard": "^17.1.0"
   },
   "eslintConfig": {
     "extends": "./node_modules/standard/eslintrc.json"
   },
   "dependencies": {
-    "jsonwebtoken": "^9.0.0"
+    "jsonwebtoken": "^9.0.1"
   }
 }
