@@ -58,6 +58,7 @@ const Techs = () => {
       title={name}
       arrow
       TransitionComponent={Zoom}
+      className='cursor-pointer'
     >
       <div data-aos='zoom-out-up'>
         {icon}
@@ -74,7 +75,7 @@ const Techs = () => {
           <Switch color='error' onChange={(e) => setShowAll(e.target.checked)} />
         </div>
         <h2 className='flex flex-col text-3xl md:text-4xl text-center font-bold  text-zinc-200 mb-20 transition-all duration-500'>
-          <span className='text-white/70 uppercase text-xs md:text-sm'>This are</span>
+          <span className='text-white/70 uppercase text-xs md:text-sm'>These are</span>
           Technologies I've worked with
         </h2>
         {

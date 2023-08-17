@@ -21,7 +21,7 @@ const ProjectDescription = ({ title, description }) => {
       <AccordionDetails className='flex flex-col gap-5'>
         {
           description.map((paragraph, index) =>
-            <p key={index}>
+            <p key={index} className='opacity-60'>
               {paragraph}
             </p>
           )
