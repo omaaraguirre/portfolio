@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Switch, Tooltip, Zoom } from '@mui/material'
-import { Html, Css, Javascript, Php, Java, Sql, MongoDB, React, Nextjs2, Express, Nodejs, Tailwindcss, Sass, Git } from '../helpers/icons'
+import { Html, Css, Javascript, Php, Sql, MongoDB, React, Express, Nodejs, Tailwindcss, Git } from '../helpers/icons'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -11,13 +11,10 @@ const Techs = () => {
   const techs = [
     { name: 'HTML', icon: <Html /> },
     { name: 'CSS', icon: <Css /> },
-    { name: 'Sass', icon: <Sass /> },
     { name: 'Tailwind CSS', icon: <Tailwindcss /> },
     { name: 'PHP', icon: <Php /> },
-    { name: 'Java', icon: <Java /> },
     { name: 'JavaScript', icon: <Javascript /> },
     { name: 'React', icon: <React /> },
-    { name: 'Nextjs', icon: <Nextjs2 /> },
     { name: 'Express', icon: <Express /> },
     { name: 'SQL', icon: <Sql /> },
     { name: 'MongoDB', icon: <MongoDB /> },
@@ -33,7 +30,6 @@ const Techs = () => {
     swipeToSlide: true,
     cssEase: 'linear',
     easing: 'linear',
-    pauseOnHover: true,
     slidesToScroll: 1,
     slidesToShow: 5,
     responsive: [
@@ -68,10 +64,10 @@ const Techs = () => {
   ))
 
   return (
-    <section className='montserrat flex flex-col py-14 bg-zinc-900'>
+    <section className='font-montserrat flex flex-col py-14 bg-zinc-900'>
       <div className='relative w-11/12 max-w-5xl mx-auto'>
         <div className='flex items-center absolute top-24 min-[500px]:top-16 right-5 transition-all duration-500'>
-          <span className='ubuntu text-white/70 mr-2'>Show All</span>
+          <span className='font-ubuntu text-white/70 mr-2'>Show All</span>
           <Switch color='error' onChange={(e) => setShowAll(e.target.checked)} />
         </div>
         <h2 className='flex flex-col text-3xl md:text-4xl text-center font-bold  text-zinc-200 mb-20 transition-all duration-500'>

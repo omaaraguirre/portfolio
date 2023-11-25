@@ -1,11 +1,12 @@
 import nodemailer from 'nodemailer'
+import { EMAIL_CONFIG } from '../config.js'
 
 const sendEmail = async ({ name, email, message }) => {
   const transport = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
+    host: EMAIL_CONFIG.HOST,
     auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS
+      user: EMAIL_CONFIG.USER,
+      pass: EMAIL_CONFIG.PASS
     },
     tls: {
       rejectUnauthorized: false
@@ -13,8 +14,8 @@ const sendEmail = async ({ name, email, message }) => {
   })
 
   const info = await transport.sendMail({
-    from: `${name} <${process.env.EMAIL_USER}>`,
-    to: process.env.EMAIL_TO,
+    from: `${name} <${EMAIL_CONFIG.USER}>`,
+    to: EMAIL_CONFIG.TO,
     replyTo: email,
     subject: 'New portfolio message',
     text: `From: ${name} (${email})\n\n${message}`,

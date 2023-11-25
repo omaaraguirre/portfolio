@@ -1,10 +1,10 @@
-import mongoose, {Schema} from 'mongoose'
+import { Schema, model } from 'mongoose'
 
-const emailSchema = new mongoose.Schema({
+const emailSchema = new Schema({
   name: {
     type: String,
     required: true,
-    trim: true,
+    trim: true
   },
   email: {
     type: String,
@@ -15,15 +15,15 @@ const emailSchema = new mongoose.Schema({
   message: {
     type: String,
     required: true,
-    trim: true,
+    trim: true
   },
   ip: String,
   origin: String,
   referer: String,
-  userAgent: String,
+  userAgent: String
 
-}, {timestamps: true})
+}, { timestamps: true })
 
-const Email = mongoose.model('Email', emailSchema)
+const Email = model('Email', emailSchema)
 
 export default Email

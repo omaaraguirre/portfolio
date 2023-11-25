@@ -23,7 +23,7 @@ const Project = ({ title, description, image, link, github, tags }) => {
         height='100%'
         width='100%'
       />
-      <div className='ubuntu flex flex-col gap-5 flex-1 pt-5'>
+      <div className='font-ubuntu flex flex-col gap-5 flex-1 pt-5'>
         <div className='flex justify-center gap-3 flex-wrap'>
           {
             tags.map((tag, index) => (

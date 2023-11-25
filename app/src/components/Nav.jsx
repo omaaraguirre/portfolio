@@ -23,10 +23,7 @@ const Nav = () => {
     <ul className='flex items-center gap-5'>
       {
         navLinks.map(({ name, href, icon }) => (
-          <li
-            key={name}
-            className='text-xl text-white/70 hover:text-white hover:scale-125 transition-all duration-100'
-          >
+          <li key={name} className='text-xl text-white/70 hover:text-white hover:scale-125 transition-all duration-100'>
             <a
               href={href}
               target='_blank'

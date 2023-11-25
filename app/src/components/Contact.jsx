@@ -77,7 +77,7 @@ const Contact = () => {
   }
 
   return (
-    <section className='montserrat flex flex-col py-14 bg-zinc-900'>
+    <section className='font-montserrat flex flex-col py-14 bg-zinc-900'>
       <div className='relative w-11/12 max-w-5xl mx-auto'>
         <h2 className='flex flex-col text-3xl md:text-4xl text-center font-bold  text-zinc-200 mb-10 md:mb-20 transition-all duration-500'>
           <span className='text-white/70 uppercase text-xs md:text-sm'>Questions? Feel free to</span>

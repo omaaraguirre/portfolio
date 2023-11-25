@@ -1,11 +1,9 @@
 import mongoose from 'mongoose'
+import { MONGO_URI } from '../config.js'
 
-const connectMongo = (connectionString) => {
-  mongoose.connect(connectionString, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-    .then(() => console.log(`Connected to MongoDB`))
+const connectMongo = () => {
+  mongoose.connect(MONGO_URI)
+    .then(() => console.log('Connected to MongoDB'))
     .catch(error => console.log('Error connecting to MongoDB:', error.message))
 }
 
