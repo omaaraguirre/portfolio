@@ -14,7 +14,7 @@ const sendEmail = async ({ name, email, message }) => {
   })
 
   const info = await transport.sendMail({
-    from: `${name} <${EMAIL_CONFIG.USER}>`,
+    from: `${name} <${EMAIL_CONFIG.FROM}>`,
     to: EMAIL_CONFIG.TO,
     replyTo: email,
     subject: 'New portfolio message',

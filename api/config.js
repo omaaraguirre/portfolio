@@ -16,7 +16,8 @@ export const EMAIL_CONFIG = {
   HOST: process.env.EMAIL_HOST,
   USER: process.env.EMAIL_USER,
   PASS: process.env.EMAIL_PASS,
-  TO: process.env.EMAIL_TO
+  TO: process.env.EMAIL_TO,
+  FROM: process.env.EMAIL_FROM
 }
 
 export const { MONGO_URI } = process.env
