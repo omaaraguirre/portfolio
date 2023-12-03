@@ -13,19 +13,23 @@ const sendEmail = async ({ name, email, message }) => {
     }
   })
 
-  const info = await transport.sendMail({
-    from: `${name} <${EMAIL_CONFIG.FROM}>`,
-    to: EMAIL_CONFIG.TO,
-    replyTo: email,
-    subject: 'New portfolio message',
-    text: `From: ${name} (${email})\n\n${message}`,
-    html: `
-    <p>From: ${name} (${email})</p>
-    <p>${message}</p>
-    `
-  })
+  try {
+    const info = await transport.sendMail({
+      from: `${name} <${EMAIL_CONFIG.USER}>`,
+      to: EMAIL_CONFIG.USER,
+      replyTo: email,
+      subject: 'New portfolio message',
+      text: `From: ${name} (${email})\n\n${message}`,
+      html: `
+      <p>From: ${name} (${email})</p>
+      <p>${message}</p>
+      `
+    })
 
-  console.log('Email sent: %s', info.messageId)
+    return { success: true, messageId: info.messageId }
+  } catch (error) {
+    return { success: false, error: error.message }
+  }
 }
 
 export default sendEmail

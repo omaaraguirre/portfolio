@@ -15,9 +15,7 @@ export const WHITELISTED_DOMAINS = IS_DEV
 export const EMAIL_CONFIG = {
   HOST: process.env.EMAIL_HOST,
   USER: process.env.EMAIL_USER,
-  PASS: process.env.EMAIL_PASS,
-  TO: process.env.EMAIL_TO,
-  FROM: process.env.EMAIL_FROM
+  PASS: process.env.EMAIL_PASS
 }
 
 export const { MONGO_URI } = process.env
