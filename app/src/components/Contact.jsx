@@ -1,127 +1,59 @@
-import { useState } from 'react'
-import toast, { Toaster } from 'react-hot-toast'
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
+import useMail from '../hooks/useMail'
 
 const Contact = () => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
-  const [errors, setErrors] = useState({})
-
-  const validateForm = () => {
-    const newErrors = {}
-    const nameRegex = /^[a-zA-Z\s]+$/
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
-    if (!name.trim()) {
-      newErrors.name = 'Name is required'
-    } else if (!nameRegex.test(name)) {
-      newErrors.name = 'Invalid name'
-    }
-
-    if (!email.trim()) {
-      newErrors.email = 'Email is required'
-    } else if (!emailRegex.test(email)) {
-      newErrors.email = 'Invalid email'
-    }
-
-    if (!message.trim()) {
-      newErrors.message = 'Message is required'
-    }
-
-    setErrors(newErrors)
-    return newErrors
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    const newErrors = validateForm()
-    if (Object.keys(newErrors).length > 0) return
-
-    try {
-      const { MODE, VITE_BACKEND_URL_DEV, VITE_BACKEND_URL_PROD } = import.meta.env
-      const HOST = MODE === 'development' ? VITE_BACKEND_URL_DEV : VITE_BACKEND_URL_PROD
-
-      const res = await fetch(`${HOST}/api/email`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message })
-      })
-      if (!res.ok) {
-        throw new Error(`(${res.status}) Something went wrong`)
-      }
-      const data = await res.json()
-
-      if (!data.ok) {
-        throw new Error(data.msg)
-      }
-
-      toast.success(data.msg, {
-        style: {
-          background: 'rgba(127, 29, 29, 1)',
-          color: '#fff'
-        },
-        icon: '📧'
-      })
-      setName('')
-      setEmail('')
-      setMessage('')
-    } catch (error) {
-      toast.error(error.message, {
-        style: {
-          background: 'rgba(127, 29, 29, 1)',
-          color: '#fff'
-        }
-      })
-    }
-  }
+  const { email, errors, handleChange, handleSubmit } = useMail()
 
   return (
     <section className='font-montserrat flex flex-col py-14 bg-zinc-900'>
       <div className='relative w-11/12 max-w-5xl mx-auto'>
-        <h2 className='flex flex-col text-3xl md:text-4xl text-center font-bold  text-zinc-200 mb-10 md:mb-20 transition-all duration-500'>
+        <h2 className='flex flex-col text-3xl md:text-4xl text-center font-bold text-zinc-200 mb-10 md:mb-20 transition-all duration-500'>
           <span className='text-white/70 uppercase text-xs md:text-sm'>Questions? Feel free to</span>
           Contact Me
         </h2>
-        <Toaster />
-        <form onSubmit={handleSubmit} className='grid grid-cols-1 md:grid-cols-2 gap-5 border border-zinc-800 rounded-lg p-6 max-w-2xl mx-auto'>
-          <div>
-            <label htmlFor='name' className='text-gray-300 font-medium block mb-2'>Name</label>
+        <ToastContainer />
+        <form
+          onSubmit={handleSubmit}
+          className='grid grid-cols-1 md:grid-cols-2 gap-5 border border-zinc-800 rounded-lg p-6 max-w-2xl mx-auto'
+        >
+          <label className='text-gray-300 font-medium block mb-2'>
+            Name
             <input
+              name='name'
               type='text'
-              id='name'
-              className='w-full px-4 py-2 rounded-sm focus:outline-none focus:ring-2 bg-white/80 focus:ring-red-900'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              className='w-full px-4 py-2 rounded-sm bg-zinc-300 text-black focus:outline-none focus:ring-2 focus:ring-red-900'
+              value={email.name}
+              onChange={e => handleChange(e)}
             />
             {errors.name && <span className='text-red-500 text-sm'>{errors.name}</span>}
-          </div>
-          <div>
-            <label htmlFor='email' className='text-gray-300 font-medium block mb-2'>Email</label>
+          </label>
+          <label className='text-gray-300 font-medium block mb-2'>
+            Email
             <input
+              name='email'
               type='email'
-              id='email'
-              className='w-full px-4 py-2 rounded-sm focus:outline-none focus:ring-2 bg-white/80 focus:ring-red-900'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              className='w-full px-4 py-2 rounded-sm bg-zinc-300 text-black focus:outline-none focus:ring-2 focus:ring-red-900'
+              value={email.email}
+              onChange={e => handleChange(e)}
             />
             {errors.email && <span className='text-red-500 text-sm'>{errors.email}</span>}
-          </div>
-          <div className='md:col-span-2'>
-            <label htmlFor='message' className='text-gray-300 font-medium block mb-2'>Message</label>
+          </label>
+          <label className='md:col-span-2 text-gray-300 font-medium block mb-2'>
+            Message
             <textarea
-              id='message'
+              name='message'
               cols='30'
               rows='5'
-              className='w-full p-4 rounded-sm focus:outline-none focus:ring-2 bg-white/80 focus:ring-red-900 resize-none'
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              value={email.message}
+              onChange={e => handleChange(e)}
+              className='w-full p-4 rounded-sm bg-zinc-300 text-black focus:outline-none focus:ring-2 focus:ring-red-900 resize-none'
             />
             {errors.message && <span className='text-red-500 text-sm'>{errors.message}</span>}
-          </div>
+          </label>
           <button
             type='submit'
-            className='md:col-span-2 bg-red-900 hover:bg-red-800 text-white py-2 px-4 rounded-sm transition-colors duration-300 ease-in-out mx-auto w-1/2 md:w-1/4'
+            className='md:col-span-2 bg-red-950 hover:bg-red-900 text-white py-2 px-4 rounded-sm transition-colors duration-300 ease-in-out mx-auto w-1/2 md:w-1/4'
           >
             Send
           </button>

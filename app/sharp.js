@@ -19,6 +19,8 @@ const convertToWebpRecursive = async (inputPath, outputPath) => {
       await sharp(inputFilePath)
         .webp({ quality: 75 })
         .toFile(outputFilePath)
+    } else if (/\.svg$/i.test(file)) {
+      fs.copyFileSync(inputFilePath, outputFilePath)
     }
   }
 }
