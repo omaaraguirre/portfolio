@@ -17,7 +17,7 @@ const Project = ({ title, description, image, link, github, tags }) => {
   return (
     <div data-aos='zoom-in-up' className='flex flex-col items-center  bg-zinc-900 text-white rounded-md w-full'>
       <img
-        className='w-auto h-auto object-cover rounded-t-md brightness-90'
+        className='w-auto h-auto object-cover object-center aspect-video rounded-t-md brightness-90'
         src={image}
         alt={`${title} image`}
         height='100%'
